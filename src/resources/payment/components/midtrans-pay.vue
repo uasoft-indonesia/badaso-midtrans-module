@@ -1,5 +1,5 @@
 <template>
-  <div @click="openSnap()">
+  <div v-on="listeners">
     <slot />
   </div>
 </template>
@@ -9,6 +9,17 @@ import api from "../../js/api/index";
 export default {
   props: {
     order: Object,
+  },
+  computed: {
+    listeners(){
+      return {
+        ...this.$listeners,
+        click: (e) => {
+          this.openSnap()
+          this.$emit('click', e)
+        },
+      }
+    },
   },
   created() {
     this.fetchConfig();
