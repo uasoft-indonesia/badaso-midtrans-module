@@ -1,0 +1,48 @@
+{
+  "version": "0.1.0",
+  "name": "badaso/midtrans-module",
+  "description": "payment gateway using midtrans for badaso",
+  "keywords": [
+    "laravel",
+    "admin",
+    "panel",
+    "dashboard",
+    "pwa",
+    "vue",
+    "generator",
+    "badaso",
+    "commerce",
+    "midtrans"
+  ],
+  "license": "proprietary",
+  "homepage": "https://badaso.uatech.co.id/",
+  "support": {
+    "issues": "https://github.com/uasoft-indonesia/badaso-midtrans-module/issues",
+    "discussion": "https://github.com/uasoft-indonesia/badaso-midtrans-module/discussions",
+    "source": "https://github.com/uasoft-indonesia/badaso-midtrans-module"
+  },
+  "type": "library",
+  "require": {
+    "badaso/core": "^2.0",
+    "badaso/commerce-module": "^2.0"
+  },
+  "authors": [
+    {
+      "name": "UASOFT",
+      "email": "hello@uatech.co.id"
+    }
+  ],
+  "minimum-stability": "alpha",
+  "autoload": {
+    "psr-4": {
+      "Uasoft\\Badaso\\Module\\Midtrans\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Uasoft\\Badaso\\Module\\Midtrans\\Providers\\BadasoMidtransModuleServiceProvider"
+      ]
+    }
+  }
+}
