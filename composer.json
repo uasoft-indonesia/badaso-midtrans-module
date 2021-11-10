@@ -24,7 +24,8 @@
   "type": "library",
   "require": {
     "badaso/core": "^2.0",
-    "badaso/commerce-module": "^2.0"
+    "badaso/commerce-module": "^0.1.0",
+    "midtrans/midtrans-php": "^2.5"
   },
   "authors": [
     {
