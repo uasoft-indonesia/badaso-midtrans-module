@@ -10,12 +10,19 @@ use Uasoft\Badaso\Controllers\Controller;
 use Uasoft\Badaso\Helpers\ApiResponse;
 use Uasoft\Badaso\Helpers\Config as HelperConfig;
 use Uasoft\Badaso\Module\Commerce\Models\Order;
+use Uasoft\Badaso\Module\Midtrans\Helpers\Configurations;
 
 class SnapController extends Controller
 {
     public function getConfig()
     {
-        return ApiResponse::success(['client_key' => env('MIDTRANS_CLIENT_KEY'), 'base_url' => $this->getSnapBaseUrl()]);
+        if (!empty(env('MIDTRANS_CLIENT_KEY'))) {
+            $midtransClientKey = env('MIDTRANS_CLIENT_KEY');
+        } else {
+            $config = Configurations::index();
+            $midtransClientKey = $config->clientId;
+        }
+        return ApiResponse::success(['client_key' => $midtransClientKey, 'base_url' => $this->getSnapBaseUrl()]);
     }
 
     private function getSnapBaseUrl()
@@ -31,8 +38,13 @@ class SnapController extends Controller
                 'id' => 'required|exists:Uasoft\Badaso\Module\Commerce\Models\Order,id',
                 'payment_type' => 'required|string|in:credit_card,gopay,cimb_clicks,bca_klikbca,bca_klikpay,bri_epay,telkomsel_cash,echannel,permata_va,other_va,bca_va,bni_va,bri_va,indomaret,alfamart,danamon_online,akulaku,shopeepay'
             ]);
-
-            Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+            if (!empty(env('MIDTRANS_SERVER_KEY'))) {
+                $midtransServerKey = env('MIDTRANS_SERVER_KEY');
+            } else {
+                $config = Configurations::index();
+                $midtransServerKey = $config->serverId;
+            }
+            Config::$serverKey = $midtransServerKey;
             Config::$isProduction = env('APP_ENV') === 'production';
             Config::$isSanitized = true;
             Config::$is3ds = true;

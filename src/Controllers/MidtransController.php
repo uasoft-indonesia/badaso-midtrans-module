@@ -8,13 +8,23 @@ use Uasoft\Badaso\Controllers\Controller;
 use Uasoft\Badaso\Models\User;
 use Uasoft\Badaso\Module\Commerce\Events\OrderStateWasChanged;
 use Uasoft\Badaso\Module\Commerce\Models\Order;
+use Uasoft\Badaso\Module\Midtrans\Helpers\Configurations;
 
 class MidtransController extends Controller
 {
     public function __invoke()
     {
+        if(!empty(env('MIDTRANS_SERVER_KEY')))
+        {
+            $midtransServerKey = env('MIDTRANS_SERVER_KEY');
+        }
+        else
+        {
+            $config = Configurations::index();
+            $midtransServerKey = $config->serverId;
+        }
         Config::$isProduction = env('APP_ENV') === 'production';
-        Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        Config::$serverKey = $midtransServerKey;
 
         try {
             $notification = new Notification();
