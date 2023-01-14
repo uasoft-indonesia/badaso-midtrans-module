@@ -52,7 +52,6 @@ class MidtransKeyConfigurationsSeeder extends Seeder
                     'group'        => 'midtransModule',
                     'can_delete'   => 0,
                 ],
-               
 
             ];
 

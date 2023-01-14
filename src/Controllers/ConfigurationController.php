@@ -34,6 +34,7 @@ class ConfigurationController extends Controller
             }])->get();
 
             $data['payments'] = collect($payments)->toArray();
+
             return ApiResponse::success($data);
         } catch (Exception $e) {
             return ApiResponse::failed($e);
@@ -44,8 +45,8 @@ class ConfigurationController extends Controller
     {
         try {
             $request->validate([
-                'id' => 'required|exists:Uasoft\Badaso\Module\Commerce\Models\Payment,id',
-                'is_active' => 'required|boolean'
+                'id'        => 'required|exists:Uasoft\Badaso\Module\Commerce\Models\Payment,id',
+                'is_active' => 'required|boolean',
             ]);
 
             Payment::where('id', $request->id)
@@ -53,7 +54,7 @@ class ConfigurationController extends Controller
                     return $query->whereIn('slug', $this->slugs);
                 })
                 ->update([
-                    'is_active' => $request->isActive
+                    'is_active' => $request->isActive,
                 ]);
 
             return ApiResponse::success();
@@ -66,14 +67,14 @@ class ConfigurationController extends Controller
     {
         try {
             $request->validate([
-                'id' => 'required|exists:Uasoft\Badaso\Module\Commerce\Models\PaymentOption,id',
-                'is_active' => 'required|boolean'
+                'id'        => 'required|exists:Uasoft\Badaso\Module\Commerce\Models\PaymentOption,id',
+                'is_active' => 'required|boolean',
             ]);
 
             PaymentOption::where('id', $request->id)
                 ->whereIn('slug', $this->slugs)
                 ->update([
-                    'is_active' => $request->isActive
+                    'is_active' => $request->isActive,
                 ]);
 
             return ApiResponse::success();

@@ -23,7 +23,7 @@ class MidtransMenusSeeder extends Seeder
         try {
             $menus = [
                 0 => [
-                    'key' => 'midtrans-module',
+                    'key'          => 'midtrans-module',
                     'display_name' => 'Midtrans Menu',
                 ],
             ];

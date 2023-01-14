@@ -14,12 +14,9 @@ class MidtransController extends Controller
 {
     public function __invoke()
     {
-        if(!empty(env('MIDTRANS_SERVER_KEY')))
-        {
+        if (!empty(env('MIDTRANS_SERVER_KEY'))) {
             $midtransServerKey = env('MIDTRANS_SERVER_KEY');
-        }
-        else
-        {
+        } else {
             $config = Configurations::index();
             $midtransServerKey = $config->serverId;
         }
@@ -53,29 +50,29 @@ class MidtransController extends Controller
                         event(new OrderStateWasChanged(User::where('id', $order->user_id)->first(), $order, 'process'));
                     }
                 }
-            } else if ($transaction == 'settlement') {
+            } elseif ($transaction == 'settlement') {
                 $order->status = 'process';
                 $order->expired_at = null;
                 $order->save();
 
                 event(new OrderStateWasChanged(User::where('id', $order->user_id)->first(), $order, 'process'));
-            } else if ($transaction == 'pending') {
+            } elseif ($transaction == 'pending') {
                 // TODO set payment status in merchant's database to 'Pending'
-            } else if ($transaction == 'deny') {
+            } elseif ($transaction == 'deny') {
                 $order->status = 'cancel';
                 $order->expired_at = null;
                 $order->cancel_message = 'Denied by Midtrans';
                 $order->save();
 
                 event(new OrderStateWasChanged(User::where('id', $order->user_id)->first(), $order, 'cancel'));
-            } else if ($transaction == 'expire') {
+            } elseif ($transaction == 'expire') {
                 $order->status = 'cancel';
                 $order->expired_at = null;
                 $order->cancel_message = 'Expired by Midtrans';
                 $order->save();
 
                 event(new OrderStateWasChanged(User::where('id', $order->user_id)->first(), $order, 'cancel'));
-            } else if ($transaction == 'cancel') {
+            } elseif ($transaction == 'cancel') {
                 $order->status = 'cancel';
                 $order->expired_at = null;
                 $order->cancel_message = 'Denied by Midtrans';
