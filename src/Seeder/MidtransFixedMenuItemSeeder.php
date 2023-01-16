@@ -39,7 +39,7 @@ class MidtransFixedMenuItemSeeder extends Seeder
                 1 => [
                     'menu_id' => $menu_id,
                     'title' => 'Midtrans Key Configuration',
-                    'url' => '/midtrans/keyconfiguration',
+                    'url' => '/midtrans/key-configuration',
                     'target' => '_self',
                     'icon_class' => 'settings',
                     'color' => '',

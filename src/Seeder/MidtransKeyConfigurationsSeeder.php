@@ -25,7 +25,7 @@ class MidtransKeyConfigurationsSeeder extends Seeder
                 0 => [
                     'key'          => 'midtransMerchantId',
                     'display_name' => 'Midtrans Merchant Id',
-                    'value'        => 'G155833803',
+                    'value'        => '',
                     'details'      => '',
                     'type'         => 'text',
                     'order'        => 1,
@@ -35,7 +35,7 @@ class MidtransKeyConfigurationsSeeder extends Seeder
                 1 => [
                     'key'          => 'midtransClientId',
                     'display_name' => 'Midtrans Client Id',
-                    'value'        => 'SB-Mid-client-nK12_c7iZC8eBTNB',
+                    'value'        => '',
                     'details'      => '',
                     'type'         => 'text',
                     'order'        => 2,
@@ -45,14 +45,14 @@ class MidtransKeyConfigurationsSeeder extends Seeder
                 2 => [
                     'key'          => 'midtransServerId',
                     'display_name' => 'Midtrans Server Id',
-                    'value'        => 'SB-Mid-server-KCm4xDJxRFjMbRqn1ZxB2ChZ',
+                    'value'        => '',
                     'details'      => '',
                     'type'         => 'text',
                     'order'        => 3,
                     'group'        => 'midtransModule',
                     'can_delete'   => 0,
                 ],
-               
+
 
             ];
 

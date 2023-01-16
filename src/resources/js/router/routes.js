@@ -15,7 +15,7 @@ export default [
     },
   },
   {
-    path: prefix + "/midtrans/keyconfiguration",
+    path: prefix + "/midtrans/key-configuration",
     name: "MidtransKeyConfiguration",
     component: Pages,
     meta: {
