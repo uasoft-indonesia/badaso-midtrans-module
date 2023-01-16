@@ -53,7 +53,6 @@ class MidtransKeyConfigurationsSeeder extends Seeder
                     'can_delete'   => 0,
                 ],
 
-
             ];
 
             foreach ($settings as $key => $value) {
