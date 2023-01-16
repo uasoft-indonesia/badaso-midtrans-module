@@ -19,14 +19,14 @@ class Configurations
             if ($config->key == 'midtransServerId') {
                 $serverId = $config->value;
             }
-
         }
 
-        $title = (object)[
-            "merchantId" => $merchantId,
-            "clientId" => $clientId,
-            "serverId" => $serverId
+        $title = (object) [
+            'merchantId' => $merchantId,
+            'clientId'   => $clientId,
+            'serverId'   => $serverId,
         ];
+
         return $title;
     }
 }
