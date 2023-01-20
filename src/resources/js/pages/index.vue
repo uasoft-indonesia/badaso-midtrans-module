@@ -8,10 +8,12 @@
 
 <script>
 import MidtransConfiguration from "./site-management/browse";
+import MidtransKeyConfiguration from "./configuration/browse";
 
 export default {
   components: {
     MidtransConfiguration,
+    MidtransKeyConfiguration
   },
   name: "BlogEntryIndex",
   data: () => ({

@@ -1,4 +1,5 @@
 export default [
-  'MidtransConfiguration',
-  'MidtransConfigurationAdd',
-]
+  "MidtransConfiguration",
+  "MidtransConfigurationAdd",
+  "MidtransKeyConfiguration",
+];
