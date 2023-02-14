@@ -1,5 +1,4 @@
 export default [
-  "MidtransConfiguration",
-  "MidtransConfigurationAdd",
-  "MidtransKeyConfiguration",
+  "MidtransConfigurations",
+  "MidtransPayments",
 ];

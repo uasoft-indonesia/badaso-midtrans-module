@@ -20,7 +20,7 @@ class BadasoMidtransModuleSeeder extends Seeder
             MidtransRolePermissionsSeeder::class,
             MidtransSiteManagementSeeder::class,
             MidtransPaymentOptionsSeeder::class,
-            MidtransKeyConfigurationsSeeder::class,
+            MidtransConfigurationsSeeder::class,
         ]);
     }
 }

@@ -27,25 +27,25 @@ class MidtransFixedMenuItemSeeder extends Seeder
             $menu_items = [
                 0 => [
                     'menu_id' => $menu_id,
+                    'title' => 'Midtrans Payment Type',
+                    'url' => '/midtrans/payment-type',
+                    'target' => '_self',
+                    'icon_class' => 'settings',
+                    'color' => '',
+                    'parent_id' => null,
+                    'order' => 1,
+                    'permissions' => 'browse_midtrans_payments',
+                ],
+                1 => [
+                    'menu_id' => $menu_id,
                     'title' => 'Midtrans Configuration',
                     'url' => '/midtrans/configuration',
                     'target' => '_self',
                     'icon_class' => 'settings',
                     'color' => '',
                     'parent_id' => null,
-                    'order' => 1,
-                    'permissions' => 'browse_midtrans_configurations',
-                ],
-                1 => [
-                    'menu_id' => $menu_id,
-                    'title' => 'Midtrans Key Configuration',
-                    'url' => '/midtrans/key-configuration',
-                    'target' => '_self',
-                    'icon_class' => 'settings',
-                    'color' => '',
-                    'parent_id' => null,
                     'order' => 2,
-                    'permissions' => 'browse_midtrans_key_configurations',
+                    'permissions' => 'browse_midtrans_configurations',
                 ],
             ];
 

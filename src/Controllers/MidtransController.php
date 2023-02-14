@@ -21,9 +21,10 @@ class MidtransController extends Controller
         else
         {
             $config = Configurations::index();
-            $midtransServerKey = $config->serverId;
+            $midtransServerKey = $config->serverKey;
         }
-        Config::$isProduction = env('APP_ENV') === 'production';
+        // Config::$isProduction = env('APP_ENV') === 'production';
+        Config::$isProduction = true;
         Config::$serverKey = $midtransServerKey;
 
         try {

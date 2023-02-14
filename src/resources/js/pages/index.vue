@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import MidtransConfiguration from "./site-management/browse";
-import MidtransKeyConfiguration from "./configuration/browse";
+import MidtransConfigurations from "./midtrans-configurations/browse";
+import MidtransPayments from "./midtrans-payments/browse";
 
 export default {
   components: {
-    MidtransConfiguration,
-    MidtransKeyConfiguration
+    MidtransConfigurations,
+    MidtransPayments,
   },
   name: "BlogEntryIndex",
   data: () => ({

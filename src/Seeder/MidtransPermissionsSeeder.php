@@ -15,8 +15,8 @@ class MidtransPermissionsSeeder extends Seeder
         $keys = [
             'browse_midtrans_configurations',
             'edit_midtrans_configurations',
-            'browse_midtrans_key_configurations',
-            'edit_midtrans_key_configurations'
+            'browse_midtrans_payments',
+            'edit_midtrans_payments',
         ];
 
         foreach ($keys as $key) {

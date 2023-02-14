@@ -13,19 +13,24 @@ class Configurations
             if ($config->key == 'midtransMerchantId') {
                 $merchantId = $config->value;
             }
-            if ($config->key == 'midtransClientId') {
-                $clientId = $config->value;
+            if ($config->key == 'midtransClientKey') {
+                $clientKey = $config->value;
             }
-            if ($config->key == 'midtransServerId') {
-                $serverId = $config->value;
+            if ($config->key == 'midtransServerKey') {
+                $serverKey = $config->value;
             }
+            if ($config->key == 'paymentTypeByBadaso') {
+                $paymentType = $config->value;
+            }
+
 
         }
 
         $title = (object)[
             "merchantId" => $merchantId,
-            "clientId" => $clientId,
-            "serverId" => $serverId
+            "clientKey" => $clientKey,
+            "serverKey" => $serverKey,
+            "paymentType" =>  $paymentType
         ];
         return $title;
     }

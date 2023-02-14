@@ -1,7 +1,7 @@
 <template>
   <div>
     <badaso-breadcrumb-row />
-    <vs-row v-if="$helper.isAllowed('browse_midtrans_configurations')">
+    <vs-row v-if="$helper.isAllowed('browse_midtrans_payments')">
       <vs-col vs-lg="12">
         <vs-card>
           <vs-row>
@@ -62,7 +62,7 @@
 import _ from "lodash";
 
 export default {
-  name: "SiteManagementBrowse",
+  name: "MidtransPayments",
   data: () => ({
     payments: [],
   }),
