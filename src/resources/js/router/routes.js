@@ -11,7 +11,16 @@ export default [
     component: Pages,
     meta: {
       title: "Midtrans Configuration",
-      useComponent: "AdminContainer"
+      useComponent: "AdminContainer",
+    },
+  },
+  {
+    path: prefix + "/midtrans/key-configuration",
+    name: "MidtransKeyConfiguration",
+    component: Pages,
+    meta: {
+      title: "Midtrans Key Configuration",
+      useComponent: "AdminContainer",
     },
   },
 ];
