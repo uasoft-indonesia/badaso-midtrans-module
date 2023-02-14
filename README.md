@@ -30,7 +30,7 @@ MIX_BADASO_MENU=admin,midtrans-module
 ```
 
 - Fill the other variables in .env file.
-  - `MIDTRANS_MERCHANT_KEY=` Required. Merchant KEY from midtrans dashboard.
+  - `MIDTRANS_MERCHANT_ID` Required. Merchant ID from midtrans dashboard.
   - `MIDTRANS_CLIENT_KEY` Required. Client KEY from midtrans dashboard.
   - `MIDTRANS_SERVER_KEY` Required. Server KEY from midtrans dashboard.
 

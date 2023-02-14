@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Installation
 
+1. Install badaso first with commerce module installed. Also you can install commerce theme if you want to. After that, you can install the badaso midtrans-module.
+
 1. Install the badaso midtrans module with the following command.
 
     ```
@@ -31,6 +33,12 @@ sidebar_position: 1
 
     ```
     php artisan migrate
+    ```
+
+1. Run the following command
+
+    ```
+    composer dump-autoload
     ```
 
 1. (Optional) Run the following command to generate seeder of badaso core, and commerce module. If you never run it before.
