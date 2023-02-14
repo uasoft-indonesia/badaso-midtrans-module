@@ -48,7 +48,7 @@ class SnapController extends Controller
             }
             Config::$serverKey = $midtransServerKey;
             // Config::$isProduction = env('APP_ENV') === 'production';
-            Config::$isProduction = false;
+            Config::$isProduction = true;
             Config::$isSanitized = true;
             Config::$is3ds = true;
 
