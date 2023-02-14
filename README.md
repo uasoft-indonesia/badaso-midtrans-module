@@ -36,3 +36,4 @@ MIX_BADASO_MENU=admin,midtrans-module
 
 - Fill the payment config in `badaso-commerce.php`. For example:
   - `'payments' => ['Uasoft\Badaso\Module\Midtrans\BadasoMidtransModule']`
+
