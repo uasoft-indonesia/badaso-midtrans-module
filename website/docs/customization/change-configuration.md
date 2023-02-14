@@ -2,27 +2,27 @@
 sidebar_position: 1
 ---
 
-# Configurations Badaso Midtrans Module
+# Konfigurasi Modul Badaso Midtrans
 
-To configuration badaso midtrans module, you can follow these steps:
+Untuk mengkonfigurasi modul midtrans badaso, Anda dapat mengikuti langkah-langkah berikut:
 
-1. Setting midtrans key in menu midtrans configuration dashboard or in file `.env` your project
+1. Mengatur kunci midtrans di dasbor konfigurasi menu midtrans atau di file `.env` proyek Anda
 
-- Setting midtrans key in `.env`
-    1. Open file .env in your project 
-    2. In `.env` set key on ` MIDTRANS_MERCHANT_ID`, `MIDTRANS_CLIENT_KEY`, `MIDTRANS_SERVER_KEY`
-    3. Save file `.env`
+- Mengatur kunci midtrans pada file `.env`
+    1. Buka file .env di proyek Anda
+    2. Didalam `.env` atur kunci midtrans pada ` MIDTRANS_MERCHANT_ID`, `MIDTRANS_CLIENT_KEY`, `MIDTRANS_SERVER_KEY`
+    3. Simpan file `.env`
 
-- Setting midtrans key in menu midtrans configuration dashboard
-    1. Open badaso dashboard
-    2. Click menu midtrans configuration
-    3. Input key Merchant ID on column `Midtrans Merchant Id`
-    4. Input key Midtrans Client Key on column `Midtrans Client Key`
-    5. Input key Midtrans Server Key on column `Midtrans Server Key`
+- Pengaturan kunci midtrans di dasbor konfigurasi menu midtrans
+    1. Buka badaso dashboard
+    2. Klik menu konfigurasi midtrans
+    3. Masukkan kunci Merchant ID pada kolom `Midtrans Merchant Id`
+    4. Masukan key Midtrans Client Key pada kolom `Midtrans Client Key`
+    5. Input key Midtrans Server Key pada kolom `Midtrans Server Key`
 
-2. In button payment type by badaso, if set enabled, you can setting all payment type options midtrans on menu `Midtrans Payment Type` of badaso dashboard. But if you set disabled, all payment type option comes from midtrans dashboard
+2. Pada button payment type by badaso, jika diaktifkan, Anda dapat mengatur semua opsi payment type midtrans pada menu `Midtrans Payment Type` dari badaso dashboard. Tetapi jika Anda menonaktifkannya, semua opsi jenis pembayaran berasal dari dasbor midtrans.
 
-3. Click button update configuration
+3. Klik tombol perbarui konfigurasi
 
 <p align="center">
   <a href="https://badaso-docs.uatech.co.id/">

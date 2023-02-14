@@ -1,79 +1,63 @@
 ---
 sidebar_position: 1
 ---
-Sebelum memulai instalasi, Anda perlu membeli lisensi terlebih dahulu. Untuk saat ini, Anda dapat menghubungi admin di sini :
-
-[via Whatsapp Indonesia](https://api.whatsapp.com/send?phone=6282169273195&text=Saya%20ingin%20beli%20Badaso%20Menit%20Theme%20)
-
-[via Whatsapp English](https://api.whatsapp.com/send?phone=6282169273195&text=I%20want%20to%20buy%20Badaso%20Menit%20Theme%20)
-
-[via Telegram](https://t.me/uasoft_support)
 
 # Installation
 
-1. Untuk memulai, tambahkan repositori tema Landpro ke file composer.json aplikasi Anda:
+1. Anda juga dapat menginstal tema commerce jika Anda mau. Setelah itu, Anda dapat menginstal modul badaso midtrans.
+
+1. Instal modul badaso midtrans dengan perintah berikut
 
     ```
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://your-username:your-license@gitlab.com/uasoft/badaso-landpro-theme.git"
-        }
-    ],
-
-    ```
-1. Anda dapat menginstal tema landpro dengan perintah berikut.
-
-    ```
-    composer require badaso/landpro-theme
+    composer require badaso/midtrans-module
     ```
 
-1. (Opsional) Jalankan perintah berikut untuk menyiapkan file badaso-core. Jika Anda tidak pernah menjalankannya sebelumnya.
+1. (Optional) Jalankan perintah berikut untuk mengatur badaso-core. Jika Anda tidak pernah menjalankannya sebelumnya.
 
     ```
     php artisan badaso:setup
     ```
-1. (Opsional) Jalankan perintah berikut untuk mengatur badaso-content. Jika Anda tidak pernah menjalankannya sebelumnya.
+1. (Optional) Jalankan perintah berikut untuk menyiapkan modul badaso-commerce. Jika Anda tidak pernah menjalankannya sebelumnya.
 
     ```
-    php artisan badaso-content:setup
+    php artisan badaso-commerce:setup
     ```
 
-1. Jalankan perintah berikut untuk mengatur tema
+1. Jalankan perintah berikut untuk mengatur modul badaso midtrans
 
     ```
-    php artisan badaso-landpro-theme:setup
+    php artisan badaso-midtrans:setup
     ```
 
-1. Jalankan perintah berikut untuk melakukan migrasi database.
+1. Jalankan perintah berikut untuk memigrasi database.
 
     ```
     php artisan migrate
     ```
 
-1. (Opsional) Jalankan perintah berikut untuk menghasilkan seeder inti badaso, dan modul konten. Jika Anda tidak pernah menjalankannya sebelumnya.
+1. Jalankan perintah berikut
+
+    ```
+    composer dump-autoload
+    ```
+
+1. (Optional) Jika Anda tidak pernah menjalankannya sebelumnya.
 
     ```
     php artisan db:seed --class="Database\Seeders\Badaso\BadasoSeeder"
 
-    php artisan db:seed --class="Database\Seeders\Badaso\Content\BadasoContentModuleSeeder"
+    php artisan db:seed --class="Database\Seeders\Badaso\Commerce\BadasoCommerceModuleSeeder"
     ```
 
-1.  Jalankan perintah untuk menghasilkan seeder tema landpro.
+1. Jalankan perintah untuk menghasilkan seeder dari modul badaso midtrans.
 
     ```
-    php artisan db:seed --class='Database\Seeders\Badaso\LandproTheme\BadasoLandproThemeSeeder'
+    php artisan db:seed --class='Database\Seeders\Badaso\Midtrans\BadasoMidtransModuleSeeder'
     ```
 
-1. Tambahkan plugin ke MIX_POST_URL_PREFIX Anda ke .env.
-
+1. Tambahkan menu plugin ke MIX_BADASO_MENU Anda ke .env. Jika Anda memiliki menu lain, sertakan dengan menggunakan koma pembatas(,).
     ```
-    MIX_BADASO_PLUGINS=content-module,landpro-theme
-    ```
-
-1. Tambahkan menu plugin ke MIX_BADASO_MENU Anda ke .env. Jika Anda memiliki menu lain, sertakan menu tersebut menggunakan koma pembatas (,).
-    ```
-    MIX_BADASO_MENU=${MIX_DEFAULT_MENU},content-module,landpro-theme
+    MIX_BADASO_MENU=${MIX_DEFAULT_MENU},commerce-module,midtrans-module
     ```
 
 1. Instal ketergantungan JS
@@ -86,9 +70,13 @@ Sebelum memulai instalasi, Anda perlu membeli lisensi terlebih dahulu. Untuk saa
     npm run watch
     ```
 
-1. Selesai. Anda dapat mengakses tema landpro
+1. Akses modul menu midtrans di dashboard badaso
     ```
-    http://localhost:8000/landpro
+    http://localhost:8000/badaso-dashboard
     ```
     
+
+
+
+
 

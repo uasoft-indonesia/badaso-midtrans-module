@@ -2,11 +2,11 @@
 sidebar_position: 3
 ---
 
-# Use Snap Payment Badaso Midtrans Module
+# Gunakan Snap Payment Modul Badaso Midtrans
 
-To use snap payments badaso midtrans module, you can follow these steps:
+Tuntuk menggunakan modul midtrans badaso pembayaran snap, Anda dapat mengikuti langkah-langkah ini:
 
-1. Initialize snap JS in frontend(PHP)
+1. Inisialisasi snap JS di frontend (PHP)
 
 ```php
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ To use snap payments badaso midtrans module, you can follow these steps:
 </html>
 ```
 
-2. Add this code in your file js
+2. Tambahkan kode ini di file js Anda
 
 ```php
 

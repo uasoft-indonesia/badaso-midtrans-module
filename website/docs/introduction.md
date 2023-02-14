@@ -17,7 +17,7 @@ slug: /
 
 <br />
 <p align="center">
-  <p align="center"><a href="https://badaso-demo.uatech.co.id/landpro" target="_blank">Try live demo</a></p>
+  <p align="center"><a href="https://badaso-demo.uatech.co.id/midtrans" target="_blank">Try live demo</a></p>
 </p>
 <p align="center">
   <a href="https://badaso-docs.uatech.co.id/">
