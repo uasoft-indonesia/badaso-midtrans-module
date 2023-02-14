@@ -53,16 +53,15 @@ class MidtransConfigurationsSeeder extends Seeder
                     'can_delete'   => 0,
                 ],
                 3 => [
-                    'key' => 'paymentTypeByBadaso',
+                    'key'          => 'paymentTypeByBadaso',
                     'display_name' => 'Payment Type by Badaso',
-                    'value' => '0',
-                    'details' => '',
-                    'type' => 'switch',
-                    'order' => 4,
-                    'group' => 'midtransModule',
-                    'can_delete' => 0,
+                    'value'        => '0',
+                    'details'      => '',
+                    'type'         => 'switch',
+                    'order'        => 4,
+                    'group'        => 'midtransModule',
+                    'can_delete'   => 0,
                 ],
-
 
             ];
 

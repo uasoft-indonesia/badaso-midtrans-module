@@ -22,6 +22,7 @@ class SnapController extends Controller
             $config = Configurations::index();
             $midtransClientKey = $config->clientKey;
         }
+
         return ApiResponse::success(['client_key' => $midtransClientKey, 'base_url' => $this->getSnapBaseUrl()]);
     }
 
@@ -35,8 +36,8 @@ class SnapController extends Controller
     {
         try {
             $request->validate([
-                'id' => 'required|exists:Uasoft\Badaso\Module\Commerce\Models\Order,id',
-                'payment_type' => 'nullable|string|in:credit_card,gopay,cimb_clicks,bca_klikbca,bca_klikpay,bri_epay,telkomsel_cash,echannel,permata_va,other_va,bca_va,bni_va,bri_va,indomaret,alfamart,danamon_online,akulaku,shopeepay'
+                'id'           => 'required|exists:Uasoft\Badaso\Module\Commerce\Models\Order,id',
+                'payment_type' => 'nullable|string|in:credit_card,gopay,cimb_clicks,bca_klikbca,bca_klikpay,bri_epay,telkomsel_cash,echannel,permata_va,other_va,bca_va,bni_va,bri_va,indomaret,alfamart,danamon_online,akulaku,shopeepay',
             ]);
 
             $config = Configurations::index();
@@ -53,10 +54,10 @@ class SnapController extends Controller
             Config::$is3ds = true;
 
             if (!Config::$serverKey) {
-                throw new Exception("Invalid server key. Please check your .env if server key is set.");
+                throw new Exception('Invalid server key. Please check your .env if server key is set.');
             }
 
-            $order = Order::with(['orderAddress','orderPayment', 'orderDetails.productDetail.product'])
+            $order = Order::with(['orderAddress', 'orderPayment', 'orderDetails.productDetail.product'])
                 ->where('id', $request->id)
                 ->where('user_id', auth()->user()->id)
                 ->firstOrFail();
@@ -64,56 +65,53 @@ class SnapController extends Controller
             $item_details = [];
 
             foreach ($order->orderDetails as $key => $orderDetail) {
-                $item_details[] = array(
-                    'id' => $orderDetail->productDetail->id,
-                    'price' => $orderDetail->price,
+                $item_details[] = [
+                    'id'       => $orderDetail->productDetail->id,
+                    'price'    => $orderDetail->price,
                     'quantity' => $orderDetail->quantity,
-                    'name' => "{$orderDetail->productDetail->product->name} - {$orderDetail->productDetail->name}",
-                );
+                    'name'     => "{$orderDetail->productDetail->product->name} - {$orderDetail->productDetail->name}",
+                ];
             }
 
             if (HelperConfig::get('commerceUseFixRateShippingCost') == 1) {
-                $item_details[] = array(
-                    'id' => 'SHIPPING_COST',
-                    'price' => HelperConfig::get('commerceFixRateShippingCost'),
+                $item_details[] = [
+                    'id'       => 'SHIPPING_COST',
+                    'price'    => HelperConfig::get('commerceFixRateShippingCost'),
                     'quantity' => 1,
-                    'name' => "Shipping cost",
-                );
+                    'name'     => 'Shipping cost',
+                ];
             }
 
             $midtrans_payments = $config->paymentType;
 
-            if($midtrans_payments == 1)
-            {
-                $params = array(
-                    'transaction_details' => array(
-                        'order_id' => $order->id,
+            if ($midtrans_payments == 1) {
+                $params = [
+                    'transaction_details' => [
+                        'order_id'     => $order->id,
                         'gross_amount' => $order->payed,
-                    ),
-                    'customer_details' => array(
+                    ],
+                    'customer_details' => [
                         'first_name' => $order->orderAddress->recipient_name,
-                        'email' => auth()->user()->email,
-                        'phone' => $order->orderAddress->phone_number,
-                    ),
-                    'item_details' => $item_details,
+                        'email'      => auth()->user()->email,
+                        'phone'      => $order->orderAddress->phone_number,
+                    ],
+                    'item_details'     => $item_details,
                     'enabled_payments' => [$request->payment_type],
-                );
-            }
-            else
-            {
-                $params = array(
-                    'transaction_details' => array(
-                        'order_id' => $order->id,
+                ];
+            } else {
+                $params = [
+                    'transaction_details' => [
+                        'order_id'     => $order->id,
                         'gross_amount' => $order->payed,
-                    ),
-                    'customer_details' => array(
+                    ],
+                    'customer_details' => [
                         'first_name' => $order->orderAddress->recipient_name,
-                        'email' => auth()->user()->email,
-                        'phone' => $order->orderAddress->phone_number,
-                    ),
+                        'email'      => auth()->user()->email,
+                        'phone'      => $order->orderAddress->phone_number,
+                    ],
                     'item_details' => $item_details,
 
-                );
+                ];
             }
 
             $snapToken = Snap::getSnapToken($params);
