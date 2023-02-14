@@ -22,16 +22,15 @@ class Configurations
             if ($config->key == 'paymentTypeByBadaso') {
                 $paymentType = $config->value;
             }
-
-
         }
 
-        $title = (object)[
-            "merchantId" => $merchantId,
-            "clientKey" => $clientKey,
-            "serverKey" => $serverKey,
-            "paymentType" =>  $paymentType
+        $title = (object) [
+            'merchantId'  => $merchantId,
+            'clientKey'   => $clientKey,
+            'serverKey'   => $serverKey,
+            'paymentType' => $paymentType,
         ];
+
         return $title;
     }
 }
