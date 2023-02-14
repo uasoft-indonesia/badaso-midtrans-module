@@ -61,8 +61,8 @@ class BadasoMidtransSetup extends Command
     {
         return [
             'MIDTRANS_MERCHANT_ID' => '',
-            'MIDTRANS_CLIENT_KEY' => '',
-            'MIDTRANS_SERVER_KEY' => ''
+            'MIDTRANS_CLIENT_KEY'  => '',
+            'MIDTRANS_SERVER_KEY'  => '',
         ];
     }
 
