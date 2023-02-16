@@ -59,6 +59,8 @@ sidebar_position: 1
     ```
     MIX_BADASO_MENU=${MIX_DEFAULT_MENU},commerce-module,midtrans-module
     ```
+1. Fill the payment config in `badaso-commerce.php`. For example:
+    - `'payments' => ['Uasoft\Badaso\Module\Midtrans\BadasoMidtransModule']`
 
 1. Install JS depedency
     ```
@@ -70,10 +72,8 @@ sidebar_position: 1
     npm run watch
     ```
 
-1. Access the menu midtrans module in badaso dashboard
-    ```
-    http://localhost:8000/badaso-dashboard
-    ```
+1. Your midtrans module already installed and you can see the menu at the dashboard.
+
     
 
 
