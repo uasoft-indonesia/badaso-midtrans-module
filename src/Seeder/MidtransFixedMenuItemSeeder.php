@@ -30,7 +30,7 @@ class MidtransFixedMenuItemSeeder extends Seeder
                     'title'       => 'Midtrans Payment Type',
                     'url'         => '/midtrans/payment-type',
                     'target'      => '_self',
-                    'icon_class'  => 'settings',
+                    'icon_class'  => 'payment',
                     'color'       => '',
                     'parent_id'   => null,
                     'order'       => 1,
