@@ -2,7 +2,7 @@
   <div>
     <badaso-breadcrumb-row />
     <vs-row
-      v-if="$helper.isAllowed('browse_midtrans_key_configurations') && groupList.length > 0"
+      v-if="$helper.isAllowed('browse_midtrans_configurations') && groupList.length > 0"
     >
       <vs-col vs-lg="12">
         <vs-card>
@@ -24,179 +24,21 @@
                   v-model="config.value"
                   size="10"
                 ></badaso-text>
-                <badaso-email
-                  v-if="config.type === 'email'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  v-model="config.value"
-                  size="10"
-                ></badaso-email>
-                <badaso-password
-                  v-if="config.type === 'password'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  v-model="config.value"
-                  size="10"
-                ></badaso-password>
-                <badaso-textarea
-                  v-if="config.type === 'textarea'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  v-model="config.value"
-                  size="10"
-                ></badaso-textarea>
-                <badaso-checkbox
-                  v-if="config.type === 'checkbox'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  v-model="config.value"
-                  size="10"
-                  :items="config.details.items"
-                ></badaso-checkbox>
-                <badaso-search
-                  v-if="config.type === 'search'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  v-model="config.value"
-                  size="10"
-                ></badaso-search>
-                <badaso-number
-                  v-if="config.type === 'number'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  v-model="config.value"
-                  size="10"
-                ></badaso-number>
-                <badaso-url
-                  v-if="config.type === 'url'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  v-model="config.value"
-                  size="10"
-                ></badaso-url>
-                <badaso-time
-                  v-if="config.type === 'time'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  v-model="config.value"
-                  size="10"
-                ></badaso-time>
-                <badaso-date
-                  v-if="config.type === 'date'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  v-model="config.value"
-                  size="10"
-                ></badaso-date>
-                <badaso-datetime
-                  v-if="config.type === 'datetime'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  v-model="config.value"
-                  size="10"
-                ></badaso-datetime>
-                <badaso-select
-                  v-if="config.type === 'select'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  v-model="config.value"
-                  size="10"
-                  :items="config.details.items"
-                ></badaso-select>
-                <badaso-radio
-                  v-if="config.type === 'radio'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  v-model="config.value"
-                  size="10"
-                  :items="config.details.items"
-                ></badaso-radio>
+
                 <badaso-switch
                   v-if="config.type === 'switch'"
                   :label="config.displayName"
                   size="10"
                   v-model="config.value"
+                 :tooltip="$t('midtrans.help.paymentTypeByBadaso')"
                 ></badaso-switch>
-                <badaso-slider
-                  v-if="config.type === 'slider'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  size="10"
-                  v-model="config.value"
-                ></badaso-slider>
-                <badaso-editor
-                  v-if="config.type === 'editor'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  size="10"
-                  v-model="config.value"
-                ></badaso-editor>
-                <badaso-tags
-                  v-if="config.type === 'tags'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  size="10"
-                  v-model="config.value"
-                ></badaso-tags>
+
                 <badaso-hidden
                   v-if="config.type === 'hidden'"
                   :label="config.displayName"
                   :placeholder="config.value"
                   v-model="config.value"
                 ></badaso-hidden>
-
-                <badaso-select-multiple
-                  v-if="config.type === 'select_multiple'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  v-model="config.value"
-                  size="10"
-                  :items="config.details.items"
-                ></badaso-select-multiple>
-                <badaso-upload-image
-                  v-if="config.type === 'upload_image'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  size="10"
-                  :private-only="config.details !== null && config.details.type === 'private-only'"
-                  :shares-only="config.details !== null && config.details.type === 'shares-only'"
-                  v-model="config.value"
-                ></badaso-upload-image>
-                <badaso-upload-file
-                  v-if="config.type === 'upload_file'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  size="10"
-                  :private-only="config.details !== null && config.details.type === 'private-only'"
-                  :shares-only="config.details !== null && config.details.type === 'shares-only'"
-                  v-model="config.value"
-                ></badaso-upload-file>
-                <badaso-color-picker
-                  v-if="config.type === 'color_picker'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  size="10"
-                  v-model="config.value"
-                ></badaso-color-picker>
-
-                <badaso-upload-image-multiple
-                  v-if="config.type === 'upload_image_multiple'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  size="10"
-                  :private-only="config.details !== null && config.details.type === 'private-only'"
-                  :shares-only="config.details !== null && config.details.type === 'shares-only'"
-                  v-model="config.value"
-                ></badaso-upload-image-multiple>
-                <badaso-upload-file-multiple
-                  v-if="config.type === 'upload_file_multiple'"
-                  :label="config.displayName"
-                  :placeholder="config.value"
-                  :private-only="config.details !== null && config.details.type === 'private-only'"
-                  :shares-only="config.details !== null && config.details.type === 'shares-only'"
-                  size="10"
-                  v-model="config.value"
-                ></badaso-upload-file-multiple>
 
                 <vs-col vs-lg="2">
                   <br />
@@ -239,7 +81,7 @@
 import _ from "lodash";
 
 export default {
-  name: "MidtransKeyConfiguration",
+  name: "MidtransConfigurations",
   components: {},
   data: () => ({
     configurations: [],
@@ -250,7 +92,7 @@ export default {
       get() {
         return [
           {
-            label: 'Midtrans Key Configuration',
+            label: 'Midtrans Configurations',
             value: 'midtransModule'
           }
         ]

@@ -20,7 +20,7 @@ class SnapController extends Controller
             $midtransClientKey = env('MIDTRANS_CLIENT_KEY');
         } else {
             $config = Configurations::index();
-            $midtransClientKey = $config->clientId;
+            $midtransClientKey = $config->clientKey;
         }
 
         return ApiResponse::success(['client_key' => $midtransClientKey, 'base_url' => $this->getSnapBaseUrl()]);
@@ -37,16 +37,19 @@ class SnapController extends Controller
         try {
             $request->validate([
                 'id'           => 'required|exists:Uasoft\Badaso\Module\Commerce\Models\Order,id',
-                'payment_type' => 'required|string|in:credit_card,gopay,cimb_clicks,bca_klikbca,bca_klikpay,bri_epay,telkomsel_cash,echannel,permata_va,other_va,bca_va,bni_va,bri_va,indomaret,alfamart,danamon_online,akulaku,shopeepay',
+                'payment_type' => 'nullable|string|in:credit_card,gopay,cimb_clicks,bca_klikbca,bca_klikpay,bri_epay,telkomsel_cash,echannel,permata_va,other_va,bca_va,bni_va,bri_va,indomaret,alfamart,danamon_online,akulaku,shopeepay',
             ]);
+
+            $config = Configurations::index();
+
             if (!empty(env('MIDTRANS_SERVER_KEY'))) {
                 $midtransServerKey = env('MIDTRANS_SERVER_KEY');
             } else {
-                $config = Configurations::index();
-                $midtransServerKey = $config->serverId;
+                $midtransServerKey = $config->serverKey;
             }
             Config::$serverKey = $midtransServerKey;
-            Config::$isProduction = env('APP_ENV') === 'production';
+            // Config::$isProduction = env('APP_ENV') === 'production';
+            Config::$isProduction = true;
             Config::$isSanitized = true;
             Config::$is3ds = true;
 
@@ -79,19 +82,37 @@ class SnapController extends Controller
                 ];
             }
 
-            $params = [
-                'transaction_details' => [
-                    'order_id'     => $order->id,
-                    'gross_amount' => $order->payed,
-                ],
-                'customer_details' => [
-                    'first_name' => $order->orderAddress->recipient_name,
-                    'email'      => auth()->user()->email,
-                    'phone'      => $order->orderAddress->phone_number,
-                ],
-                'item_details'     => $item_details,
-                'enabled_payments' => [$request->payment_type],
-            ];
+            $midtrans_payments = $config->paymentType;
+
+            if ($midtrans_payments == 1) {
+                $params = [
+                    'transaction_details' => [
+                        'order_id'     => $order->id,
+                        'gross_amount' => $order->payed,
+                    ],
+                    'customer_details' => [
+                        'first_name' => $order->orderAddress->recipient_name,
+                        'email'      => auth()->user()->email,
+                        'phone'      => $order->orderAddress->phone_number,
+                    ],
+                    'item_details'     => $item_details,
+                    'enabled_payments' => [$request->payment_type],
+                ];
+            } else {
+                $params = [
+                    'transaction_details' => [
+                        'order_id'     => $order->id,
+                        'gross_amount' => $order->payed,
+                    ],
+                    'customer_details' => [
+                        'first_name' => $order->orderAddress->recipient_name,
+                        'email'      => auth()->user()->email,
+                        'phone'      => $order->orderAddress->phone_number,
+                    ],
+                    'item_details' => $item_details,
+
+                ];
+            }
 
             $snapToken = Snap::getSnapToken($params);
 

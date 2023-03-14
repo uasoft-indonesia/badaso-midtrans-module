@@ -6,20 +6,20 @@ let prefix = process.env.MIX_ADMIN_PANEL_ROUTE_PREFIX
 
 export default [
   {
-    path: prefix + "/midtrans/configuration",
-    name: "MidtransConfiguration",
+    path: prefix + "/midtrans/payment-type",
+    name: "MidtransPayments",
     component: Pages,
     meta: {
-      title: "Midtrans Configuration",
+      title: "Midtrans Payment Type",
       useComponent: "AdminContainer",
     },
   },
   {
-    path: prefix + "/midtrans/key-configuration",
-    name: "MidtransKeyConfiguration",
+    path: prefix + "/midtrans/configuration",
+    name: "MidtransConfigurations",
     component: Pages,
     meta: {
-      title: "Midtrans Key Configuration",
+      title: "Midtrans Configuration",
       useComponent: "AdminContainer",
     },
   },

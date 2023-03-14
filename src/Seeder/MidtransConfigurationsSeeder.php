@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Uasoft\Badaso\Models\Configuration;
 
-class MidtransKeyConfigurationsSeeder extends Seeder
+class MidtransConfigurationsSeeder extends Seeder
 {
     /**
      * Auto generated seed file.
@@ -33,8 +33,8 @@ class MidtransKeyConfigurationsSeeder extends Seeder
                     'can_delete'   => 0,
                 ],
                 1 => [
-                    'key'          => 'midtransClientId',
-                    'display_name' => 'Midtrans Client Id',
+                    'key'          => 'midtransClientKey',
+                    'display_name' => 'Midtrans Client Key',
                     'value'        => '',
                     'details'      => '',
                     'type'         => 'text',
@@ -43,12 +43,22 @@ class MidtransKeyConfigurationsSeeder extends Seeder
                     'can_delete'   => 0,
                 ],
                 2 => [
-                    'key'          => 'midtransServerId',
-                    'display_name' => 'Midtrans Server Id',
+                    'key'          => 'midtransServerKey',
+                    'display_name' => 'Midtrans Server Key',
                     'value'        => '',
                     'details'      => '',
                     'type'         => 'text',
                     'order'        => 3,
+                    'group'        => 'midtransModule',
+                    'can_delete'   => 0,
+                ],
+                3 => [
+                    'key'          => 'paymentTypeByBadaso',
+                    'display_name' => 'Payment Type by Badaso',
+                    'value'        => '0',
+                    'details'      => '',
+                    'type'         => 'switch',
+                    'order'        => 4,
                     'group'        => 'midtransModule',
                     'can_delete'   => 0,
                 ],
