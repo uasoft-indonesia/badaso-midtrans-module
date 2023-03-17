@@ -4,7 +4,6 @@ namespace Uasoft\Badaso\Module\Midtrans\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Midtrans\Config;
 use Midtrans\Snap;
 use Uasoft\Badaso\Controllers\Controller;
@@ -20,15 +19,16 @@ class SnapController extends Controller
     {
         $midtrans = new Midtrans();
         $clientKey = $midtrans->clientKey;
+
         return ApiResponse::success(['client_key' => $clientKey, 'base_url' => $this->getSnapBaseUrl()]);
     }
 
     private function getSnapBaseUrl()
     {
         $midtrans = new Midtrans();
+
         return $midtrans->isProduction ?
         'https://app.midtrans.com/snap/snap.js' : 'https://app.sandbox.midtrans.com/snap/snap.js';
-
     }
 
     public function getSnapToken(Request $request)

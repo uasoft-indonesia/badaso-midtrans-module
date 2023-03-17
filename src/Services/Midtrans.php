@@ -2,10 +2,9 @@
 
 namespace Uasoft\Badaso\Module\Midtrans\Services;
 
-use Midtrans\Config;
 use Illuminate\Support\Facades\App;
+use Midtrans\Config;
 use Uasoft\Badaso\Module\Midtrans\Helpers\Configurations;
-
 
 class Midtrans
 {
