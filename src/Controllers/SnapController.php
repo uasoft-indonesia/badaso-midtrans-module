@@ -4,6 +4,7 @@ namespace Uasoft\Badaso\Module\Midtrans\Controllers;
 
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Midtrans\Config;
 use Midtrans\Snap;
 use Uasoft\Badaso\Controllers\Controller;
@@ -11,25 +12,23 @@ use Uasoft\Badaso\Helpers\ApiResponse;
 use Uasoft\Badaso\Helpers\Config as HelperConfig;
 use Uasoft\Badaso\Module\Commerce\Models\Order;
 use Uasoft\Badaso\Module\Midtrans\Helpers\Configurations;
+use Uasoft\Badaso\Module\Midtrans\Services\Midtrans;
 
 class SnapController extends Controller
 {
     public function getConfig()
     {
-        if (!empty(env('MIDTRANS_CLIENT_KEY'))) {
-            $midtransClientKey = env('MIDTRANS_CLIENT_KEY');
-        } else {
-            $config = Configurations::index();
-            $midtransClientKey = $config->clientKey;
-        }
-
-        return ApiResponse::success(['client_key' => $midtransClientKey, 'base_url' => $this->getSnapBaseUrl()]);
+        $midtrans = new Midtrans();
+        $clientKey = $midtrans->clientKey;
+        return ApiResponse::success(['client_key' => $clientKey, 'base_url' => $this->getSnapBaseUrl()]);
     }
 
     private function getSnapBaseUrl()
     {
-        return Config::$isProduction ?
+        $midtrans = new Midtrans();
+        return $midtrans->isProduction ?
         'https://app.midtrans.com/snap/snap.js' : 'https://app.sandbox.midtrans.com/snap/snap.js';
+
     }
 
     public function getSnapToken(Request $request)
@@ -41,16 +40,12 @@ class SnapController extends Controller
             ]);
 
             $config = Configurations::index();
+            $midtrans = new Midtrans();
 
-            if (!empty(env('MIDTRANS_SERVER_KEY'))) {
-                $midtransServerKey = env('MIDTRANS_SERVER_KEY');
-            } else {
-                $midtransServerKey = $config->serverKey;
-            }
-            Config::$serverKey = $midtransServerKey;
-            Config::$isProduction = env('APP_ENV') === 'production';
-            Config::$isSanitized = true;
-            Config::$is3ds = true;
+            Config::$serverKey = $midtrans->serverKey;
+            Config::$isProduction = $midtrans->isProduction;
+            Config::$isSanitized = $midtrans->isSanitized;
+            Config::$is3ds = $midtrans->is3ds;
 
             if (!Config::$serverKey) {
                 throw new Exception('Invalid server key. Please check your .env if server key is set.');
