@@ -189,12 +189,12 @@ class MidtransPaymentOptionsSeeder extends Seeder
                     foreach ($value as $k => $v) {
                         PaymentOption::firstOrCreate([
                             'payment_type_id'  => $payment->id,
-                            'slug'        => $v['slug'],
-                            'name'        => $v['name'],
-                            'description' => $v['description'],
-                            'image'       => $v['image'],
-                            'is_active'   => $v['is_active'],
-                            'order'       => $v['order'],
+                            'slug'             => $v['slug'],
+                            'name'             => $v['name'],
+                            'description'      => $v['description'],
+                            'image'            => $v['image'],
+                            'is_active'        => $v['is_active'],
+                            'order'            => $v['order'],
                         ]);
                     }
                 }
