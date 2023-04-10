@@ -34,7 +34,6 @@ class SnapController extends Controller
     public function getSnapToken(Request $request)
     {
         try {
-
             $request->validate([
                 'id'           => 'required|exists:Uasoft\Badaso\Module\Commerce\Models\Order,id',
                 'payment_type' => 'nullable|string|in:credit_card,gopay,cimb_clicks,bca_klikbca,bca_klikpay,bri_epay,telkomsel_cash,echannel,permata_va,other_va,bca_va,bni_va,bri_va,indomaret,alfamart,danamon_online,akulaku,shopeepay',
